@@ -1,17 +1,30 @@
-from abc import ABC, abstractmethod
-
+from abc import ABC, abstractmethod, abstractclassmethod
+from typing import Type, Any
+from pymongo import MongoClient
+class ORMResult:
+    status: int
+    message: str
 
 class ORMBase(ABC):
-    _caller_chain: str
+    """ORM Base Class"""
+    client : Type[MongoClient|None] = None
+
+    @abstractclassmethod
+    def connect(self, client: Any):
+        pass
 
     @abstractmethod 
-    def save(self):
-        print(self._caller_chain)
-
-    @abstractmethod
-    def load(self):
+    def save(self, table: str, data: dict,)->ORMResult:
         pass
 
     @abstractmethod
-    def find(self):
+    def load(self, table: str, data: dict,)->ORMResult:
+        pass
+
+    @abstractmethod
+    def find(self, table: str, data: dict,):
+        pass
+
+    @abstractmethod
+    def from_orm(self):
         pass

@@ -1,0 +1,4 @@
+name: Test01
+orm:
+  mongo: mongodb+srv://toyaji:qkdnf87!@cluster0.5ahvecd.mongodb.net/test
+  postgres: postgres://postgres:happygk2@localhost:5432/test
