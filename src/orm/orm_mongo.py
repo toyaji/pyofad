@@ -18,7 +18,7 @@ class MongoORM(ORMBase):
             print(f"MongoDB version: {inf['version']}")
 
     def save(self, table: str, data: dict,):
-        pass
+        print(f"save {table} {data}")
 
     def load(self, table: str, data: dict,):
         pass
